@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Card from "../UI/Card";
+import MealItem from "./MealItem/MealItem";
 
 const DUMMY_MEALS = [
   {
@@ -28,21 +30,25 @@ const DUMMY_MEALS = [
 ];
 
 const USAvailableMeals = ({ className }) => {
-  const mealsList = DUMMY_MEALS.map((i) => <li>{i.name}</li>);
+  const mealsList = DUMMY_MEALS.map((i) => (
+    <MealItem
+      key={i.id}
+      name={i.name}
+      description={i.description}
+      price={i.price}
+    ></MealItem>
+  ));
 
   return (
     <section className={className}>
-      <ul>{mealsList}</ul>
+      <Card>
+        <ul>{mealsList}</ul>
+      </Card>
     </section>
   );
 };
 
-const StyledAvailableMeals = styled(USAvailableMeals)`
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 14px;
-  background-color: white;
-`;
+const StyledAvailableMeals = styled(USAvailableMeals)``;
 
 function AvailableMeals() {
   return <StyledAvailableMeals></StyledAvailableMeals>;
