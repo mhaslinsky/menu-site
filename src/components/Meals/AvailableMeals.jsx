@@ -29,7 +29,32 @@ const DUMMY_MEALS = [
   },
 ];
 
-const USAvailableMeals = ({ className }) => {
+const StyledAvailableMeals = styled(AvailableMeals)`
+  max-width: 60rem;
+  width: 90%;
+  margin: 2rem auto;
+  animation: meals-appear 1s ease-out forwards;
+
+  .ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @keyframes meals-appear {
+    from {
+      opacity: 0;
+      transform: translateY(3rem);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
+function AvailableMeals({ className }) {
   const mealsList = DUMMY_MEALS.map((i) => (
     <MealItem
       key={i.id}
@@ -46,12 +71,6 @@ const USAvailableMeals = ({ className }) => {
       </Card>
     </section>
   );
-};
-
-const StyledAvailableMeals = styled(USAvailableMeals)``;
-
-function AvailableMeals() {
-  return <StyledAvailableMeals></StyledAvailableMeals>;
 }
 
-export default AvailableMeals;
+export default StyledAvailableMeals;

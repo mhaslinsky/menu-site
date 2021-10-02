@@ -24,12 +24,14 @@ const StyledMealItem = styled(MealItem)`
 `;
 
 function MealItem({ className, name, description, price }) {
+  const formattedPrice = `$${price.toFixed(2)}`;
+
   return (
     <li className={className}>
       <div>
         <h3>{name}</h3>
         <div className="description">{description}</div>
-        <div className="price">{price}</div>
+        <div className="price">{formattedPrice}</div>
       </div>
       <div></div>
     </li>

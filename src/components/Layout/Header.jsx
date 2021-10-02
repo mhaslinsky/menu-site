@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import headerImage from "../../assets/pizzaheader.jpg";
+import headerImage from "../../assets/pizzaheader3.png";
 import HeaderCartButton from "./HeaderCardButton";
 
 const HeaderStyle = styled.header`
