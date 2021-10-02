@@ -36,7 +36,7 @@ function Header() {
   return (
     <React.Fragment>
       <HeaderStyle>
-        <h1>React Foods</h1>
+        <h1>Marco Polo's</h1>
         <HeaderCartButton />
       </HeaderStyle>
       <ImageDiv>
