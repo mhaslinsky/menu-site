@@ -6,7 +6,6 @@ const StyledMealItem = styled(MealItem)`
   margin: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #ccc;
-  background: black;
 
   & h3 {
     margin: 0 0 0.25rem 0;
@@ -26,8 +25,8 @@ const StyledMealItem = styled(MealItem)`
 
 function MealItem({ className, name, description, price }) {
   return (
-    <li>
-      <div className={className}>
+    <li className={className}>
+      <div>
         <h3>{name}</h3>
         <div className="description">{description}</div>
         <div className="price">{price}</div>
@@ -37,4 +36,4 @@ function MealItem({ className, name, description, price }) {
   );
 }
 
-export default MealItem;
+export default StyledMealItem;

@@ -1,22 +1,6 @@
 import styled from "styled-components";
 
-const USMealsSummary = ({ className, props }) => {
-  return (
-    <section className={className}>
-      <h2>New Jersey Style Italian, Delivered to You!</h2>
-      <p>
-        Choose your favorite meal from our broad selection of available meals
-        and enjoy a delicious lunch or dinner at home.
-      </p>
-      <p>
-        All our meals are cooked with high-quality ingredients, just-in-time and
-        of course by experienced chefs!
-      </p>
-    </section>
-  );
-};
-
-const StyledMealsSummary = styled(USMealsSummary)`
+const StyledMealsSummary = styled(MealsSummary)`
   text-align: center;
   max-width: 45rem;
   width: 90%;
@@ -35,8 +19,20 @@ const StyledMealsSummary = styled(USMealsSummary)`
   }
 `;
 
-function MealsSummary() {
-  return <StyledMealsSummary />;
+function MealsSummary({ className }) {
+  return (
+    <section className={className}>
+      <h2>New Jersey Style Italian, Delivered to You!</h2>
+      <p>
+        Choose your favorite meal from our broad selection of available meals
+        and enjoy a delicious lunch or dinner at home.
+      </p>
+      <p>
+        All our meals are cooked with high-quality ingredients, just-in-time and
+        of course by experienced chefs!
+      </p>
+    </section>
+  );
 }
 
-export default MealsSummary;
+export default StyledMealsSummary;
