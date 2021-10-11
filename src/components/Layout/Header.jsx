@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import headerImage from "../../assets/pizzaheader3.png";
-import HeaderCartButton from "./HeaderCardButton";
+import HeaderCartButton from "./HeaderCartButton";
 
 const HeaderStyle = styled.header`
   position: fixed;
@@ -32,12 +32,12 @@ const ImageDiv = styled.div`
   }
 `;
 
-function Header() {
+function Header({ onShowCart }) {
   return (
     <React.Fragment>
       <HeaderStyle>
         <h1>Marco Polo's</h1>
-        <HeaderCartButton />
+        <HeaderCartButton onClick={onShowCart} />
       </HeaderStyle>
       <ImageDiv>
         <img src={headerImage} alt="nice pizza" />
