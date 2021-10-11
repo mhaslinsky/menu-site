@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import MealItemForm from "./MealItemForm";
 
 const StyledMealItem = styled(MealItem)`
   display: flex;
@@ -23,7 +24,7 @@ const StyledMealItem = styled(MealItem)`
   }
 `;
 
-function MealItem({ className, name, description, price }) {
+function MealItem({ className, name, description, price, key }) {
   const formattedPrice = `$${price.toFixed(2)}`;
 
   return (
@@ -33,7 +34,9 @@ function MealItem({ className, name, description, price }) {
         <div className="description">{description}</div>
         <div className="price">{formattedPrice}</div>
       </div>
-      <div></div>
+      <div>
+        <MealItemForm key={key} />
+      </div>
     </li>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./components/Layout/Header";
+import StyledMIF from "./components/Meals/MealItem/MealItemForm";
 import Meals from "./components/Meals/Meals";
-import Test from "./Test";
 
 function App() {
   return (
