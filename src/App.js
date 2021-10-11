@@ -10,9 +10,9 @@ function App() {
     setCartisShown(true);
   }
 
-  function hideCartHandler() {
-    setCartisShown(false);
-  }
+  // function hideCartHandler() {
+  //   setCartisShown(false);
+  // }
 
   return (
     <React.Fragment>
