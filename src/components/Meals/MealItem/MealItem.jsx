@@ -26,13 +26,13 @@ const StyledMealItem = styled(MealItem)`
   }
 `;
 
-function MealItem({ className, name, description, price, key }) {
+function MealItem({ className, name, description, price, key, id }) {
   const cartCtx = useContext(CartContext);
 
   const formattedPrice = `$${price.toFixed(2)}`;
 
   function addToCartHandler(amount) {
-    cartCtx.addItem({ id: key, name: name, amount: amount, price: price });
+    cartCtx.addItem({ id: id, name: name, amount: amount, price: price });
   }
 
   return (
