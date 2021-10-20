@@ -24,7 +24,7 @@ function HeaderCartButton({ onClick }) {
     }, 300);
 
     return () => {
-      // clearTimeout(timer);
+      clearTimeout(timer);
     };
   }, [cartCtx.items]);
 
