@@ -30,10 +30,10 @@ const StyledAvailableMeals = styled(AvailableMeals)`
 
 function AvailableMeals({ className }) {
   const [meals, setMeals] = useState([]);
-  const loadedMeals = [];
 
   useEffect(() => {
     async function fetchMeals() {
+      const loadedMeals = [];
       const response = await fetch(
         "https://food-app-d91de-default-rtdb.firebaseio.com/meals.json"
       );
