@@ -50,7 +50,7 @@ function AvailableMeals({ className }) {
       setMeals(loadedMeals);
     }
     fetchMeals();
-  });
+  }, []);
 
   const mealsList = meals.map((i) => (
     <MealItem
