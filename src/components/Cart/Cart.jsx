@@ -1,10 +1,12 @@
 import classes from "./Cart.module.css";
 import Modal from "../UI/Modal";
 import { CartContext } from "../../store/CartProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import CartItem from "./CartItem";
+import Checkout from "./Checkout";
 
 function Cart({ onClick }) {
+  const [isCheckout, setIsCheckout] = useState(false);
   const cartCtx = useContext(CartContext);
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
@@ -15,6 +17,10 @@ function Cart({ onClick }) {
   function addItemHandler(item) {
     //overriding amount prop with a 1, otherwise amount would duplicate
     cartCtx.addItem({ ...item, amount: 1 });
+  }
+
+  function orderHandler() {
+    setIsCheckout(true);
   }
 
   const cartItems = (
@@ -31,6 +37,20 @@ function Cart({ onClick }) {
       ))}
     </ul>
   );
+
+  const modalActions = (
+    <div className={classes.actions}>
+      <button className={classes["button-alt"]} onClick={onClick}>
+        Close
+      </button>
+      {hasItems && (
+        <button className={classes.button} onClick={orderHandler}>
+          Order
+        </button>
+      )}
+    </div>
+  );
+
   return (
     <Modal>
       {cartItems}
@@ -38,12 +58,8 @@ function Cart({ onClick }) {
         <span>Total Amount</span>
         <span>{totalAmount}</span>
       </div>
-      <div className={classes.actions}>
-        <button className={classes["button-alt"]} onClick={onClick}>
-          Close
-        </button>
-        {hasItems && <button className={classes.button}>Order</button>}
-      </div>
+      {isCheckout && <Checkout onCancel={onClick} />}
+      {!isCheckout && modalActions}
     </Modal>
   );
 }

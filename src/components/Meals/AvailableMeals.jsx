@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import classes from "./AvailableMeals.module.css";
 import Card from "../UI/Card";
 import MealItem from "./MealItem/MealItem";
 import { useEffect, useState } from "react";
@@ -30,6 +31,8 @@ const StyledAvailableMeals = styled(AvailableMeals)`
 
 function AvailableMeals({ className }) {
   const [meals, setMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState();
 
   useEffect(() => {
     async function fetchMeals() {
@@ -37,6 +40,9 @@ function AvailableMeals({ className }) {
       const response = await fetch(
         "https://food-app-d91de-default-rtdb.firebaseio.com/meals.json"
       );
+      if (!response.ok) {
+        throw new Error("Failed to fetch menu, please try again.");
+      }
       const responseData = await response.json();
 
       for (const key in responseData) {
@@ -48,9 +54,31 @@ function AvailableMeals({ className }) {
         });
       }
       setMeals(loadedMeals);
+
+      setIsLoading(false);
     }
-    fetchMeals();
+
+    fetchMeals().catch((e) => {
+      setIsLoading(false);
+      setError(e);
+    });
   }, []);
+
+  if (isLoading) {
+    return (
+      <section className={classes.loading}>
+        <p>Loading..</p>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className={classes.error}>
+        <p>{error.message}</p>
+      </section>
+    );
+  }
 
   const mealsList = meals.map((i) => (
     <MealItem
