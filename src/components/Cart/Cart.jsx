@@ -23,6 +23,16 @@ function Cart({ onClick }) {
     setIsCheckout(true);
   }
 
+  function submitOrderHandler(userData) {
+    fetch("https://food-app-d91de-default-rtdb.firebaseio.com/orders.json", {
+      method: "POST",
+      body: JSON.stringify({
+        user: userData,
+        orderedItems: cartCtx.items,
+      }),
+    });
+  }
+
   const cartItems = (
     <ul className={classes["cart-items"]}>
       {cartCtx.items.map((i) => (
@@ -58,7 +68,9 @@ function Cart({ onClick }) {
         <span>Total Amount</span>
         <span>{totalAmount}</span>
       </div>
-      {isCheckout && <Checkout onCancel={onClick} />}
+      {isCheckout && (
+        <Checkout onConfirm={submitOrderHandler} onCancel={onClick} />
+      )}
       {!isCheckout && modalActions}
     </Modal>
   );
