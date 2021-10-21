@@ -12,6 +12,7 @@ function App() {
   }
 
   function hideCartHandler() {
+    console.log("cart hidden");
     setCartisShown(false);
   }
 
